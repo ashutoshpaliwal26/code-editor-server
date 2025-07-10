@@ -10,14 +10,20 @@ jobs:
   build:
     runs-on: ubuntu-latest
 
-    setps:
-      - uses: actions/checkout@v4
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
 
-      - name: Change Directory
-        run: |
-          cd authentication
-      
-      - name: Build Image First
-        run: |
-          docker build -t ashutoshpaliwal26/code_editor .
-      
+      - name: Log in to Container Registry
+        uses: docker/login-actions@v4
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+        
+      - name: Build the and Push Docker image
+        uses: docker/build-push-actor@v5
+        with:
+          context: ./authentication
+          push: true
+          tags: ghcr.io/code_editor:authentication
