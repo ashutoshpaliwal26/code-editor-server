@@ -1,0 +1,23 @@
+name: Docker Image CI
+
+on:
+  push:
+    branches: ["main"]
+  pull_request:
+    branches: ["main"]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    setps:
+      - uses: actions/checkout@v4
+
+      - name: Change Directory
+        run: |
+          cd authentication
+      
+      - name: Build Image First
+        run: |
+          docker build -t ashutoshpaliwal26/code_editor .
+      
