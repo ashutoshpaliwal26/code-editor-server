@@ -30,4 +30,4 @@ jobs:
         with:
           context: ./authentication
           push: true
-          tags: ${{ secrets.DOCKER_USERNAME }}/code-editor:authentication
+          tags: ${{ secrets.DOCKER_USERNAME }}/code_editor:authentication
