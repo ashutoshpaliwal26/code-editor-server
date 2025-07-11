@@ -29,29 +29,14 @@ jobs:
           --health-retries 5
 
     env:
-      DB_NAME: mytestdb
-      DB_USER: postgres
-      DB_PASSWORD: postgres
+      DB_NAME: code
+      DB_USER: admin
+      DB_PASSWORD: root
       DB_HOST: localhost
       DB_PORT: 5432
-      # If you use a DB_URL:
-      DB_URL: postgres://postgres:postgres@localhost:5432/mytestdb
+      DB_URL: postgres://postgres:postgres@localhost:5432/code
 
     steps:
-<<<<<<< HEAD
-    - uses: actions/checkout@v4
-    - name: Set up Python ${{ matrix.python-version }}
-      uses: actions/setup-python@v3
-      with:
-        python-version: ${{ matrix.python-version }}
-    - name: Install Dependencies
-      run: |
-        python -m pip install --upgrade pip
-        pip install -r requirements.txt
-    - name: Run Tests
-      run: |
-        python authentication/manage.py test
-=======
       - uses: actions/checkout@v4
 
       - name: Set up Python ${{ matrix.python-version }}
@@ -73,4 +58,3 @@ jobs:
       - name: Run Django tests
         run: |
           python authentication/manage.py test
->>>>>>> 24d94ea7e9966a7c4c1ff40bc8075bd30542f51e
